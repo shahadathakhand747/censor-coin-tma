@@ -1,0 +1,97 @@
+{
+  "app_name": "Censor Coin",
+  "loading": "Cargando...",
+  "verify": {
+    "title": "Únete a Censor Coin",
+    "description": "Únete a nuestro canal de Telegram para continuar",
+    "join": "Unirse al Canal",
+    "verify": "Verificar Membresía",
+    "verifying": "Verificando...",
+    "success": "¡Membresía verificada!",
+    "failed": "Por favor únete al canal primero",
+    "not_member": "Aún no eres miembro de nuestro canal"
+  },
+  "nav": {
+    "home": "Inicio",
+    "earn": "Ganar",
+    "profile": "Perfil"
+  },
+  "home": {
+    "total_points": "Puntos Totales",
+    "stats": {
+      "total_refers": "Total Referidos",
+      "tasks_today": "Tareas Hoy",
+      "claims_today": "Reclamos Hoy",
+      "claim_codes": "Códigos Usados"
+    },
+    "welcome": "Bienvenido de vuelta"
+  },
+  "earn": {
+    "title": "Ganar Monedas",
+    "daily_censoring": "Censura Diaria",
+    "daily_desc": "Revisa contenido y gana 5000 monedas por tarea",
+    "censor_claim": "Reclamación de Censura",
+    "claim_desc": "Usa códigos de reclamación para ganar 3000 monedas",
+    "social_tasks": "Tareas Sociales",
+    "social_desc": "Completa tareas sociales por 10000 monedas",
+    "task": "Tarea",
+    "completed": "Completado",
+    "start_task": "Iniciar Tarea",
+    "review_content": "Revisa este contenido",
+    "is_violent": "¿Violento/Adulto?",
+    "is_clear": "¿Claro en HD?",
+    "submit_review": "Enviar Revisión",
+    "watching_ad": "Cargando anuncio...",
+    "task_rewarded": "+5000 Monedas!",
+    "claim_title": "Reclamación de Censura",
+    "claim_progress": "{{done}}/7 Reclamados Hoy",
+    "enter_code": "Ingresar código de reclamación",
+    "validate_claim": "Reclamar Recompensa",
+    "claim_rewarded": "+3000 Monedas!",
+    "invalid_code": "Código inválido",
+    "code_used": "Código ya utilizado",
+    "youtube_task": "Suscríbete en YouTube",
+    "tiktok_task": "Sigue en TikTok",
+    "social_reward": "+10000 Monedas!",
+    "wait_timer": "Por favor espera {{seconds}}s...",
+    "all_done": "¡Todas las tareas completadas por hoy!"
+  },
+  "profile": {
+    "title": "Perfil",
+    "ton_address": "Dirección TON",
+    "edit_address": "Editar Dirección TON",
+    "address_placeholder": "Ingresa dirección de billetera TON",
+    "save_address": "Guardar Dirección",
+    "address_cooldown": "Puedes cambiar la dirección de nuevo en {{days}} días",
+    "referral": "Referido",
+    "referral_link": "Tu Enlace de Referido",
+    "copy_link": "Copiar Enlace",
+    "copied": "¡Copiado!",
+    "total_refers": "Total Referidos",
+    "coins_earned": "Monedas Ganadas",
+    "language": "Idioma",
+    "select_language": "Seleccionar Idioma",
+    "tutorial": "Tutorial",
+    "watch_tutorial": "Ver Tutorial en YouTube",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio",
+    "masked_address": "No establecido",
+    "ton_address_saved": "¡Dirección TON guardada!",
+    "referral_updated": "¡Conteo de referidos actualizado!"
+  },
+  "language": {
+    "en": "English",
+    "bn": "বাংলা",
+    "hi": "हिन्दी",
+    "es": "Español"
+  },
+  "common": {
+    "close": "Cerrar",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "confirm": "Confirmar",
+    "error": "Ocurrió un error",
+    "retry": "Reintentar",
+    "coins": "Monedas"
+  }
+}

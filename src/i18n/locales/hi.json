@@ -1,0 +1,97 @@
+{
+  "app_name": "सेंसर कॉइन",
+  "loading": "लोड हो रहा है...",
+  "verify": {
+    "title": "सेंसर कॉइन से जुड़ें",
+    "description": "जारी रखने के लिए हमारे टेलीग्राम चैनल से जुड़ें",
+    "join": "चैनल से जुड़ें",
+    "verify": "सदस्यता सत्यापित करें",
+    "verifying": "सत्यापन हो रहा है...",
+    "success": "सदस्यता सत्यापित!",
+    "failed": "पहले चैनल से जुड़ें",
+    "not_member": "आप अभी हमारे चैनल के सदस्य नहीं हैं"
+  },
+  "nav": {
+    "home": "होम",
+    "earn": "कमाएं",
+    "profile": "प्रोफ़ाइल"
+  },
+  "home": {
+    "total_points": "कुल अंक",
+    "stats": {
+      "total_refers": "कुल रेफरल",
+      "tasks_today": "आज के कार्य",
+      "claims_today": "आज के दावे",
+      "claim_codes": "उपयोग किए कोड"
+    },
+    "welcome": "वापस स्वागत है"
+  },
+  "earn": {
+    "title": "कॉइन कमाएं",
+    "daily_censoring": "दैनिक सेंसरिंग",
+    "daily_desc": "सामग्री की समीक्षा करें और प्रति कार्य 5000 कॉइन पाएं",
+    "censor_claim": "सेंसर दावा",
+    "claim_desc": "दावा कोड का उपयोग करके 3000 कॉइन पाएं",
+    "social_tasks": "सामाजिक कार्य",
+    "social_desc": "सामाजिक कार्य पूरा करके 10000 कॉइन पाएं",
+    "task": "कार्य",
+    "completed": "पूर्ण",
+    "start_task": "कार्य शुरू करें",
+    "review_content": "इस सामग्री की समीक्षा करें",
+    "is_violent": "हिंसक/वयस्क?",
+    "is_clear": "स्पष्ट HD?",
+    "submit_review": "समीक्षा सबमिट करें",
+    "watching_ad": "विज्ञापन लोड हो रहा है...",
+    "task_rewarded": "+5000 कॉइन!",
+    "claim_title": "सेंसर दावा",
+    "claim_progress": "आज {{done}}/7 दावे किए",
+    "enter_code": "दावा कोड दर्ज करें",
+    "validate_claim": "पुरस्कार दावा करें",
+    "claim_rewarded": "+3000 कॉइन!",
+    "invalid_code": "अमान्य कोड",
+    "code_used": "कोड पहले ही उपयोग हो चुका है",
+    "youtube_task": "YouTube पर सब्सक्राइब करें",
+    "tiktok_task": "TikTok पर फ़ॉलो करें",
+    "social_reward": "+10000 कॉइन!",
+    "wait_timer": "कृपया {{seconds}}s प्रतीक्षा करें...",
+    "all_done": "आज के सभी कार्य पूर्ण!"
+  },
+  "profile": {
+    "title": "प्रोफ़ाइल",
+    "ton_address": "TON पता",
+    "edit_address": "TON पता संपादित करें",
+    "address_placeholder": "TON वॉलेट पता दर्ज करें",
+    "save_address": "पता सहेजें",
+    "address_cooldown": "आप {{days}} दिनों में पता फिर से बदल सकते हैं",
+    "referral": "रेफरल",
+    "referral_link": "आपका रेफरल लिंक",
+    "copy_link": "लिंक कॉपी करें",
+    "copied": "कॉपी हो गया!",
+    "total_refers": "कुल रेफरल",
+    "coins_earned": "अर्जित कॉइन",
+    "language": "भाषा",
+    "select_language": "भाषा चुनें",
+    "tutorial": "ट्यूटोरियल",
+    "watch_tutorial": "YouTube पर ट्यूटोरियल देखें",
+    "privacy": "गोपनीयता नीति",
+    "terms": "सेवा की शर्तें",
+    "masked_address": "सेट नहीं किया",
+    "ton_address_saved": "TON पता सहेजा गया!",
+    "referral_updated": "रेफरल गिनती अपडेट हुई!"
+  },
+  "language": {
+    "en": "English",
+    "bn": "বাংলা",
+    "hi": "हिन्दी",
+    "es": "Español"
+  },
+  "common": {
+    "close": "बंद करें",
+    "cancel": "रद्द करें",
+    "save": "सहेजें",
+    "confirm": "पुष्टि करें",
+    "error": "एक त्रुटि हुई",
+    "retry": "पुनः प्रयास करें",
+    "coins": "कॉइन"
+  }
+}

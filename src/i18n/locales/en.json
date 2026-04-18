@@ -1,0 +1,97 @@
+{
+  "app_name": "Censor Coin",
+  "loading": "Loading...",
+  "verify": {
+    "title": "Join Censor Coin",
+    "description": "Join our Telegram channel to continue",
+    "join": "Join Channel",
+    "verify": "Verify Membership",
+    "verifying": "Verifying...",
+    "success": "Membership verified!",
+    "failed": "Please join the channel first",
+    "not_member": "You are not a member of our channel yet"
+  },
+  "nav": {
+    "home": "Home",
+    "earn": "Earn",
+    "profile": "Profile"
+  },
+  "home": {
+    "total_points": "Total Points",
+    "stats": {
+      "total_refers": "Total Refers",
+      "tasks_today": "Tasks Today",
+      "claims_today": "Claims Today",
+      "claim_codes": "Codes Used"
+    },
+    "welcome": "Welcome back"
+  },
+  "earn": {
+    "title": "Earn Coins",
+    "daily_censoring": "Daily Censoring",
+    "daily_desc": "Review content and earn 5000 coins per task",
+    "censor_claim": "Censor Claim",
+    "claim_desc": "Use claim codes to earn 3000 coins",
+    "social_tasks": "Social Tasks",
+    "social_desc": "Complete social tasks for 10000 coins",
+    "task": "Task",
+    "completed": "Completed",
+    "start_task": "Start Task",
+    "review_content": "Review this content",
+    "is_violent": "Violent / Adult?",
+    "is_clear": "Clear HD?",
+    "submit_review": "Submit Review",
+    "watching_ad": "Loading ad...",
+    "task_rewarded": "+5000 Coins!",
+    "claim_title": "Censor Claim",
+    "claim_progress": "{{done}}/7 Claimed Today",
+    "enter_code": "Enter claim code",
+    "validate_claim": "Claim Reward",
+    "claim_rewarded": "+3000 Coins!",
+    "invalid_code": "Invalid code",
+    "code_used": "Code already used",
+    "youtube_task": "Subscribe on YouTube",
+    "tiktok_task": "Follow on TikTok",
+    "social_reward": "+10000 Coins!",
+    "wait_timer": "Please wait {{seconds}}s...",
+    "all_done": "All tasks completed for today!"
+  },
+  "profile": {
+    "title": "Profile",
+    "ton_address": "TON Address",
+    "edit_address": "Edit TON Address",
+    "address_placeholder": "Enter TON wallet address",
+    "save_address": "Save Address",
+    "address_cooldown": "You can change address again in {{days}} days",
+    "referral": "Referral",
+    "referral_link": "Your Referral Link",
+    "copy_link": "Copy Link",
+    "copied": "Copied!",
+    "total_refers": "Total Referrals",
+    "coins_earned": "Coins Earned",
+    "language": "Language",
+    "select_language": "Select Language",
+    "tutorial": "Tutorial",
+    "watch_tutorial": "Watch Tutorial on YouTube",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "masked_address": "Not set",
+    "ton_address_saved": "TON address saved!",
+    "referral_updated": "Referral count updated!"
+  },
+  "language": {
+    "en": "English",
+    "bn": "বাংলা",
+    "hi": "हिन्दी",
+    "es": "Español"
+  },
+  "common": {
+    "close": "Close",
+    "cancel": "Cancel",
+    "save": "Save",
+    "confirm": "Confirm",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "coins": "Coins"
+  }
+}
