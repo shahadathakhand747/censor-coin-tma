@@ -1318,6 +1318,20 @@ function showApp() {
   document.documentElement.setAttribute('lang', lang);
 }
 
+// ── BROWSER PREVIEW (skip verification in non-Telegram browser) ──
+function handleBrowserPreview() {
+  State.user.membership_verified = true;
+  State.user.reg_status = 'registered';
+  State.user.first_name = 'Demo User';
+  State.user.username = 'demo';
+  State.user.total_points = 12500;
+  State.user.total_refers = 2;
+  State.user.referral_code = 'DEMO2024';
+  State.user.language = State.user.language || 'en';
+  hideEl('verify-modal');
+  showApp();
+}
+
 // ── INITIALIZATION ─────────────────────────────────
 async function init() {
   // Init sounds
@@ -1366,6 +1380,10 @@ async function init() {
       setText('verify-hint-text', t('afterJoin'));
 
       showEl('verify-modal');
+      // In a regular browser (no Telegram context) show the preview bypass button
+      if (!State.telegramUser) {
+        showEl('browser-preview-btn');
+      }
     }
   }, 2500);
 }
