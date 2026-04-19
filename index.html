@@ -1,13 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="theme-color" content="#0D0D0D" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Censor Coin</title>
 
-  <!-- Telegram WebApp SDK -->
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <!-- Tailwind CSS CDN v2 -->
+  <script src="https://cdn.tailwindcss.com/3.4.1"></script>
+
+  <!-- Phosphor Icons CDN -->
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
+
+  <!-- Lottie Web CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+
+  <!-- Howler.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
 
   <!-- Monetag TMA SDK -->
   <script src='//libtl.com/sdk.js' data-zone='10883491' data-sdk='show_10883491'></script>
@@ -15,427 +23,499 @@
   <!-- OnClickA TMA SDK -->
   <script src="https://js.onclckvd.com/in-stream-ad-admanager/tma.js"></script>
 
-  <!-- Lottie Web -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+  <!-- Telegram WebApp SDK -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
-  <!-- Howler.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
-
-  <!-- Phosphor Icons -->
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" />
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css" />
-
-  <!-- Tailwind CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2/dist/tailwind.min.css" />
-
-  <!-- App Styles -->
-  <link rel="stylesheet" href="styles.css" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/earn.css">
+  <link rel="stylesheet" href="css/profile.css">
 </head>
-<body>
+<body oncontextmenu="return false">
 
-  <!-- ── SPLASH SCREEN ──────────────────────────────── -->
+  <!-- Splash Screen -->
   <div id="splash-screen">
     <div class="splash-inner">
       <div class="splash-logo">
-        <div class="splash-coin-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="32" cy="32" r="30" fill="url(#coinGrad)" stroke="#FFD700" stroke-width="2"/>
-            <text x="32" y="39" text-anchor="middle" font-size="22" font-weight="900" fill="#0D0D0D" font-family="system-ui">CC</text>
-            <defs>
-              <linearGradient id="coinGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#FFD700"/>
-                <stop offset="1" stop-color="#FFA500"/>
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-        <h1 class="splash-title">CENSOR COIN</h1>
-        <p class="splash-sub">Earn by Censoring</p>
+        <i class="ph-fill ph-coin" style="font-size:64px;color:#F5C518;"></i>
       </div>
-      <div class="splash-dots">
-        <span></span><span></span><span></span>
-      </div>
+      <div class="splash-title">censor coin</div>
+      <div class="splash-spinner"></div>
     </div>
   </div>
 
-  <!-- ── VERIFICATION GATE MODAL ─────────────────────── -->
+  <!-- Verify Modal -->
   <div id="verify-modal" class="modal-overlay hidden">
-    <div class="modal-box">
-      <div class="modal-icon-wrap">
-        <svg width="56" height="56" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="32" cy="32" r="30" fill="url(#vGrad)" stroke="#2AABEE" stroke-width="2"/>
-          <path d="M20 32l8 8 16-16" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <defs>
-            <linearGradient id="vGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#1a1a2e"/><stop offset="1" stop-color="#0D0D0D"/>
-            </linearGradient>
-          </defs>
-        </svg>
+    <div class="modal-box verify-modal-box">
+      <div class="verify-icon">
+        <i class="ph-fill ph-telegram-logo" style="font-size:48px;color:#229ED9;"></i>
       </div>
-      <h2 class="modal-title" id="verify-title">Join Our Channel</h2>
-      <p class="modal-desc" id="verify-desc">Join @censorcoin to start earning with Censor Coin</p>
-      <button class="btn btn-primary btn-full" id="join-channel-btn" onclick="handleJoinChannel()">
-        <i class="ph-bold ph-telegram-logo"></i>
-        <span id="join-btn-text">Join Channel</span>
-      </button>
-      <button class="btn btn-secondary btn-full" id="verify-btn" onclick="handleVerify()" style="margin-top:10px">
-        <i class="ph-bold ph-shield-check"></i>
-        <span id="verify-btn-text">Verify Membership</span>
-      </button>
-      <p class="modal-hint" id="verify-hint-text">After joining, tap Verify</p>
-      <button class="btn btn-ghost btn-full hidden" id="browser-preview-btn" onclick="handleBrowserPreview()" style="margin-top:14px;opacity:0.7;font-size:13px;">
-        <i class="ph-bold ph-eye"></i>
-        <span>Preview App (Browser Demo)</span>
-      </button>
+      <h2 class="verify-title" data-i18n="verify_title">Join Our Channel</h2>
+      <p class="verify-desc" data-i18n="verify_desc">Join our channel — all claim codes will be provided here</p>
+      <div class="verify-actions">
+        <button class="btn btn-primary" id="btn-join" onclick="joinChannel()">
+          <i class="ph ph-arrow-square-out"></i>
+          <span data-i18n="btn_join">Join</span>
+        </button>
+        <button class="btn btn-secondary" id="btn-verify" onclick="verifyAndProceed()">
+          <i class="ph ph-check-circle"></i>
+          <span data-i18n="btn_verify">Verify</span>
+        </button>
+      </div>
+      <!-- Browser-only preview button (hidden in Telegram) -->
+      <div id="browser-preview-btn" class="browser-preview-wrap hidden">
+        <button class="btn btn-ghost btn-sm" onclick="bypassVerify()">
+          <i class="ph ph-eye"></i>
+          <span>Preview (Browser Only)</span>
+        </button>
+      </div>
     </div>
   </div>
 
-  <!-- ── REGISTRATION LOADING OVERLAY ───────────────── -->
-  <div id="reg-overlay" class="modal-overlay hidden">
-    <div class="modal-box" style="text-align:center;padding:36px 24px;">
-      <div class="spinner" style="margin:0 auto 18px;"></div>
-      <h3 id="reg-text" style="color:#fff;font-size:15px;font-weight:600;">Setting up your account…</h3>
-    </div>
-  </div>
+  <!-- Main App Container -->
+  <div id="app-container" class="hidden">
 
-  <!-- ── REWARD OVERLAY ──────────────────────────────── -->
-  <div id="reward-overlay" class="reward-overlay hidden">
-    <div class="reward-content">
-      <div id="reward-lottie" style="width:120px;height:120px;margin:0 auto 12px;"></div>
-      <div class="reward-amount" id="reward-amount-text">+5,000</div>
-      <div class="reward-label" id="reward-label-text">COINS EARNED</div>
-    </div>
-  </div>
-
-  <!-- ── MAIN APP ────────────────────────────────────── -->
-  <div id="app" class="hidden">
-
-    <!-- PAGE: HOME -->
-    <div id="page-home" class="page active-page">
-      <div class="page-scroll">
-        <div class="home-header">
-          <div class="home-greeting" id="home-greeting">Good day!</div>
-          <div class="home-username" id="home-username">@user</div>
+    <!-- Home Page -->
+    <div id="home-page" class="page">
+      <div class="page-header">
+        <div class="user-greeting">
+          <div id="home-avatar" class="avatar"></div>
+          <div>
+            <div class="greeting-text" data-i18n="greeting">Hello</div>
+            <div id="home-username" class="username-text">User</div>
+          </div>
         </div>
-
-        <div class="points-hero">
-          <div class="points-label" id="total-points-label">Total Points</div>
-          <div class="points-value" id="total-points-value">0</div>
-          <div class="points-sub">CENSOR COINS</div>
+        <div class="page-title">
+          <i class="ph-fill ph-coin" style="color:#F5C518;"></i>
+          Censor Coin
         </div>
+      </div>
 
-        <!-- Hero Illustration -->
-        <div class="hero-illustration">
-          <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
-            <rect width="320" height="180" rx="12" fill="#1A1A1A"/>
-            <ellipse cx="160" cy="130" rx="100" ry="20" fill="#252525"/>
-            <rect x="60" y="60" width="200" height="120" rx="10" fill="#222"/>
-            <rect x="70" y="70" width="180" height="100" rx="8" fill="#2a2a2a"/>
-            <!-- Coin stacks -->
-            <ellipse cx="100" cy="145" rx="18" ry="7" fill="#FFD700" opacity="0.8"/>
-            <rect x="82" y="115" width="36" height="30" rx="3" fill="#FFC200" opacity="0.8"/>
-            <ellipse cx="100" cy="115" rx="18" ry="7" fill="#FFD700" opacity="0.9"/>
-            <ellipse cx="160" cy="150" rx="22" ry="8" fill="#FFD700" opacity="0.8"/>
-            <rect x="138" y="110" width="44" height="40" rx="3" fill="#FFC200" opacity="0.8"/>
-            <ellipse cx="160" cy="110" rx="22" ry="8" fill="#FFD700" opacity="0.95"/>
-            <ellipse cx="220" cy="147" rx="18" ry="7" fill="#FFD700" opacity="0.8"/>
-            <rect x="202" y="120" width="36" height="27" rx="3" fill="#FFC200" opacity="0.8"/>
-            <ellipse cx="220" cy="120" rx="18" ry="7" fill="#FFD700" opacity="0.9"/>
-            <!-- Graph bars -->
-            <rect x="80" y="82" width="16" height="24" rx="2" fill="#3a3a4a"/>
-            <rect x="102" y="74" width="16" height="32" rx="2" fill="#FFD700" opacity="0.7"/>
-            <rect x="124" y="86" width="16" height="20" rx="2" fill="#3a3a4a"/>
-            <rect x="146" y="70" width="16" height="36" rx="2" fill="#FFD700" opacity="0.9"/>
-            <rect x="168" y="78" width="16" height="28" rx="2" fill="#3a3a4a"/>
-            <rect x="190" y="76" width="16" height="30" rx="2" fill="#FFD700" opacity="0.7"/>
-            <rect x="212" y="88" width="16" height="18" rx="2" fill="#3a3a4a"/>
-            <!-- Trend line -->
-            <polyline points="88,90 110,80 132,93 154,74 176,82 198,79 220,91" stroke="#FFD700" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
-          </svg>
-        </div>
-
+      <div class="home-content">
         <!-- Stats Cards -->
         <div class="stats-grid">
           <div class="stat-card">
-            <div class="stat-icon"><i class="ph-fill ph-users"></i></div>
-            <div class="stat-value" id="stat-refers">0</div>
-            <div class="stat-label" id="stat-refers-label">Total Refers</div>
+            <div class="stat-icon"><i class="ph-fill ph-coins" style="color:#F5C518;"></i></div>
+            <div class="stat-value" id="home-total-points">0</div>
+            <div class="stat-label" data-i18n="total_coins">Total Coins</div>
           </div>
           <div class="stat-card">
-            <div class="stat-icon tasks-icon"><i class="ph-fill ph-check-square"></i></div>
-            <div class="stat-value" id="stat-tasks">0/6</div>
-            <div class="stat-label" id="stat-tasks-label">Tasks Today</div>
+            <div class="stat-icon"><i class="ph-fill ph-users" style="color:#4ADE80;"></i></div>
+            <div class="stat-value" id="home-total-refers">0</div>
+            <div class="stat-label" data-i18n="total_refers">Total Refers</div>
           </div>
           <div class="stat-card">
-            <div class="stat-icon claims-icon"><i class="ph-fill ph-ticket"></i></div>
-            <div class="stat-value" id="stat-claims">0/7</div>
-            <div class="stat-label" id="stat-claims-label">Claims Today</div>
+            <div class="stat-icon"><i class="ph-fill ph-check-square" style="color:#60A5FA;"></i></div>
+            <div class="stat-value" id="home-tasks-done">0</div>
+            <div class="stat-label" data-i18n="tasks_today">Tasks Today</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="ph-fill ph-trophy" style="color:#F97316;"></i></div>
+            <div class="stat-value" id="home-referral-coins">0</div>
+            <div class="stat-label" data-i18n="referral_coins">Referral Coins</div>
           </div>
         </div>
 
         <!-- Lottie Animation -->
-        <div id="home-lottie-container" class="lottie-center-wrap">
-          <div id="home-lottie" style="width:140px;height:140px;margin:0 auto;"></div>
+        <div class="lottie-container">
+          <div id="home-lottie" class="lottie-anim"></div>
+        </div>
+
+        <!-- Illustration -->
+        <div class="illustration-wrap">
+          <img src="https://undraw.co/api/illustrations/random?color=F5C518" alt="illustration" class="undraw-illustration" onerror="this.style.display='none'">
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+          <button class="quick-action-btn" onclick="switchPage('earn')">
+            <i class="ph-fill ph-lightning" style="color:#F5C518;"></i>
+            <span data-i18n="earn_now">Earn Now</span>
+          </button>
+          <button class="quick-action-btn" onclick="switchPage('profile')">
+            <i class="ph-fill ph-user-circle" style="color:#60A5FA;"></i>
+            <span data-i18n="my_profile">My Profile</span>
+          </button>
+        </div>
+
+        <!-- Daily Progress -->
+        <div class="card progress-card">
+          <div class="progress-header">
+            <span data-i18n="daily_progress">Daily Progress</span>
+            <span id="home-progress-text">0/6</span>
+          </div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar" id="home-progress-bar" style="width:0%"></div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- PAGE: EARN -->
-    <div id="page-earn" class="page">
-      <div class="page-scroll">
+    <!-- Earn Page -->
+    <div id="earn-page" class="page hidden">
+      <div class="page-header">
+        <div class="page-title">
+          <i class="ph-fill ph-lightning" style="color:#F5C518;"></i>
+          <span data-i18n="earn_title">Earn</span>
+        </div>
+        <div class="header-points">
+          <i class="ph-fill ph-coin" style="color:#F5C518;font-size:14px;"></i>
+          <span id="earn-points-display">0</span>
+        </div>
+      </div>
+
+      <div class="earn-content">
+
+        <!-- Daily Claim Section -->
         <div class="section-header">
-          <h2 class="section-title" id="earn-title">Earn</h2>
-          <div class="section-sub" id="earn-sub">Complete tasks to earn coins</div>
+          <i class="ph-fill ph-gift" style="color:#F5C518;"></i>
+          <span data-i18n="daily_claims">Daily Claims</span>
+          <span class="badge" id="claim-progress-badge">0/7</span>
+        </div>
+        <div class="claim-section">
+          <button class="btn btn-primary btn-full" id="btn-open-claim" onclick="openClaimModal()">
+            <i class="ph ph-key"></i>
+            <span data-i18n="enter_claim_code">Enter Claim Code</span>
+            <span class="claim-reward-hint">+3,000</span>
+          </button>
+          <div class="claim-slots" id="claim-slots">
+            <!-- Rendered by earn.js -->
+          </div>
         </div>
 
-        <!-- Daily Censoring -->
-        <div class="section-group">
-          <div class="group-header">
-            <i class="ph-fill ph-eye-slash"></i>
-            <span id="daily-censor-label">Daily Censoring</span>
-            <span class="badge-gold" id="daily-censor-badge">5,000 each</span>
-          </div>
-          <div id="daily-tasks-list" class="tasks-list"></div>
+        <!-- Daily Censoring Tasks -->
+        <div class="section-header">
+          <i class="ph-fill ph-shield-check" style="color:#4ADE80;"></i>
+          <span data-i18n="daily_tasks">Daily Moderation Tasks</span>
+          <span class="badge badge-green" id="task-progress-badge">0/6</span>
         </div>
-
-        <!-- Censor Claim -->
-        <div class="section-group">
-          <div class="group-header">
-            <i class="ph-fill ph-ticket"></i>
-            <span id="censor-claim-label">Censor Claim</span>
-            <span class="badge-blue" id="censor-claim-badge">3,000 each</span>
-          </div>
-          <div class="claim-card" onclick="openClaimModal()">
-            <div class="claim-card-left">
-              <div class="claim-card-title" id="claim-card-title">Enter Claim Code</div>
-              <div class="claim-card-sub" id="claim-card-sub">0/7 claimed today</div>
-            </div>
-            <div class="claim-card-right">
-              <i class="ph-bold ph-caret-right"></i>
-            </div>
-          </div>
+        <div class="task-list" id="task-list">
+          <!-- Rendered by earn.js -->
         </div>
 
         <!-- Social Tasks -->
-        <div class="section-group">
-          <div class="group-header">
-            <i class="ph-fill ph-share-network"></i>
-            <span id="social-tasks-label">Social Tasks</span>
-            <span class="badge-purple" id="social-tasks-badge">10,000 each</span>
-          </div>
-          <div id="social-tasks-list" class="tasks-list"></div>
+        <div class="section-header">
+          <i class="ph-fill ph-share-network" style="color:#60A5FA;"></i>
+          <span data-i18n="social_tasks">Social Tasks</span>
         </div>
+        <div class="social-list" id="social-list">
+          <!-- Rendered by earn.js -->
+        </div>
+
       </div>
     </div>
 
-    <!-- PAGE: PROFILE -->
-    <div id="page-profile" class="page">
-      <div class="page-scroll">
+    <!-- Profile Page -->
+    <div id="profile-page" class="page hidden">
+      <div class="page-header">
+        <div class="page-title">
+          <i class="ph-fill ph-user-circle" style="color:#60A5FA;"></i>
+          <span data-i18n="profile_title">Profile</span>
+        </div>
+      </div>
+
+      <div class="profile-content">
+        <!-- Avatar & Name -->
         <div class="profile-hero">
-          <div class="profile-avatar" id="profile-avatar">
-            <span id="profile-avatar-initials">?</span>
+          <div id="profile-avatar" class="avatar avatar-lg"></div>
+          <div id="profile-name" class="profile-name">User</div>
+          <div id="profile-username" class="profile-username">@username</div>
+          <div class="profile-coins">
+            <i class="ph-fill ph-coin" style="color:#F5C518;"></i>
+            <span id="profile-coins-display">0</span>
+            <span data-i18n="coins">coins</span>
           </div>
-          <div class="profile-name" id="profile-name">User</div>
-          <div class="profile-username" id="profile-username-display">@user</div>
         </div>
 
-        <!-- TON Address Card -->
-        <div class="profile-card" id="ton-address-card">
-          <div class="profile-card-row">
-            <div class="profile-card-icon ton-icon"><i class="ph-fill ph-wallet"></i></div>
-            <div class="profile-card-info">
-              <div class="profile-card-label" id="ton-label">TON Address</div>
-              <div class="profile-card-value" id="ton-value">Not set</div>
+        <!-- TON Wallet -->
+        <div class="card profile-section-card">
+          <div class="section-row">
+            <div class="section-row-left">
+              <i class="ph-fill ph-wallet" style="color:#60A5FA;"></i>
+              <div>
+                <div class="section-row-title" data-i18n="ton_wallet">TON Wallet</div>
+                <div id="profile-ton-display" class="section-row-sub masked-address">Not set</div>
+              </div>
             </div>
-            <button class="icon-btn" onclick="openTonModal()" id="ton-edit-btn">
-              <i class="ph-bold ph-pencil-simple"></i>
+            <button class="btn btn-ghost btn-sm" onclick="openTonModal()">
+              <i class="ph ph-pencil-simple"></i>
             </button>
           </div>
         </div>
 
-        <!-- Referral Card -->
-        <div class="profile-card">
-          <div class="profile-card-row">
-            <div class="profile-card-icon ref-icon"><i class="ph-fill ph-users-three"></i></div>
-            <div class="profile-card-info">
-              <div class="profile-card-label" id="referral-label-txt">Referrals</div>
-              <div class="profile-card-value" id="referral-count-val">0 refers</div>
+        <!-- Referral Section -->
+        <div class="card profile-section-card">
+          <div class="section-label" data-i18n="referral_program">Referral Program</div>
+          <div class="referral-stats">
+            <div class="referral-stat">
+              <div id="profile-total-refers" class="referral-stat-value">0</div>
+              <div class="referral-stat-label" data-i18n="total_refers">Total Refers</div>
+            </div>
+            <div class="referral-stat">
+              <div id="profile-referral-earned" class="referral-stat-value">0</div>
+              <div class="referral-stat-label" data-i18n="coins_earned">Coins Earned</div>
             </div>
           </div>
-          <div class="referral-link-row">
-            <div class="referral-link-text" id="referral-link-display">Loading…</div>
-            <button class="copy-btn" onclick="copyReferralLink()" id="copy-referral-btn">
-              <i class="ph-bold ph-copy"></i>
-              <span id="copy-btn-text">Copy</span>
+          <div class="referral-link-wrap">
+            <div class="referral-link-input" id="referral-link-display"></div>
+            <button class="btn btn-ghost btn-sm" onclick="copyReferralLink()">
+              <i class="ph ph-copy"></i>
             </button>
           </div>
-          <div class="referral-stats-row">
-            <div class="ref-stat">
-              <span class="ref-stat-val" id="ref-total-refers">0</span>
-              <span class="ref-stat-label" id="ref-label">Referrals</span>
-            </div>
-            <div class="ref-stat">
-              <span class="ref-stat-val" id="ref-coins-earned">0</span>
-              <span class="ref-stat-label" id="ref-coins-label">Coins Earned</span>
+        </div>
+
+        <!-- Daily Referrals -->
+        <div class="card profile-section-card">
+          <div class="section-row">
+            <div class="section-row-left">
+              <i class="ph-fill ph-chart-line-up" style="color:#4ADE80;"></i>
+              <div>
+                <div class="section-row-title" data-i18n="today_referrals">Today's Referrals</div>
+                <div id="profile-daily-refers" class="section-row-sub">0</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Language Card -->
-        <div class="profile-card">
-          <div class="profile-card-row">
-            <div class="profile-card-icon lang-icon"><i class="ph-fill ph-translate"></i></div>
-            <div class="profile-card-info">
-              <div class="profile-card-label" id="lang-label">Language</div>
+        <!-- Settings -->
+        <div class="card profile-section-card">
+          <div class="section-label" data-i18n="settings">Settings</div>
+
+          <div class="section-row clickable" onclick="openLangModal()">
+            <div class="section-row-left">
+              <i class="ph-fill ph-globe" style="color:#A78BFA;"></i>
+              <div>
+                <div class="section-row-title" data-i18n="language">Language</div>
+                <div id="profile-lang-display" class="section-row-sub">English</div>
+              </div>
             </div>
+            <i class="ph ph-caret-right" style="color:#666;"></i>
           </div>
-          <div class="lang-grid" id="lang-grid"></div>
+
+          <div class="section-divider"></div>
+
+          <div class="section-row clickable" onclick="openTutorial()">
+            <div class="section-row-left">
+              <i class="ph-fill ph-youtube-logo" style="color:#FF0000;"></i>
+              <div>
+                <div class="section-row-title" data-i18n="tutorial">Tutorial</div>
+                <div class="section-row-sub" data-i18n="watch_tutorial">Watch on YouTube</div>
+              </div>
+            </div>
+            <i class="ph ph-arrow-square-out" style="color:#666;"></i>
+          </div>
         </div>
 
-        <!-- Links Card -->
-        <div class="profile-card links-card">
-          <a class="profile-link-row" href="#" onclick="openLinkInApp('https://www.youtube.com/@Censorcoin_TMA');return false;" id="tutorial-link">
-            <i class="ph-fill ph-youtube-logo" style="color:#FF0000;"></i>
-            <span id="tutorial-label">Tutorial</span>
-            <i class="ph-bold ph-caret-right" style="margin-left:auto;color:#666;"></i>
-          </a>
-          <a class="profile-link-row" href="#" onclick="openLinkInApp('https://t.me/Censornewz/5');return false;" id="privacy-link">
-            <i class="ph-fill ph-shield" style="color:#2AABEE;"></i>
-            <span id="privacy-label">Privacy Policy</span>
-            <i class="ph-bold ph-caret-right" style="margin-left:auto;color:#666;"></i>
-          </a>
-          <a class="profile-link-row" href="#" onclick="openLinkInApp('https://t.me/Censornewz/6');return false;" id="terms-link">
-            <i class="ph-fill ph-file-text" style="color:#A78BFA;"></i>
-            <span id="terms-label">Terms of Service</span>
-            <i class="ph-bold ph-caret-right" style="margin-left:auto;color:#666;"></i>
-          </a>
+        <!-- Legal -->
+        <div class="card profile-section-card">
+          <div class="section-label" data-i18n="legal">Legal</div>
+          <div class="section-row clickable" onclick="openLegal('privacy')">
+            <div class="section-row-left">
+              <i class="ph-fill ph-shield" style="color:#60A5FA;"></i>
+              <div class="section-row-title" data-i18n="privacy_policy">Privacy Policy</div>
+            </div>
+            <i class="ph ph-arrow-square-out" style="color:#666;"></i>
+          </div>
+          <div class="section-divider"></div>
+          <div class="section-row clickable" onclick="openLegal('terms')">
+            <div class="section-row-left">
+              <i class="ph-fill ph-file-text" style="color:#60A5FA;"></i>
+              <div class="section-row-title" data-i18n="terms_of_service">Terms of Service</div>
+            </div>
+            <i class="ph ph-arrow-square-out" style="color:#666;"></i>
+          </div>
+        </div>
+
+        <div class="profile-footer">
+          <div class="version-text">Censor Coin v1.0.0</div>
         </div>
       </div>
     </div>
 
-    <!-- ── BOTTOM NAVIGATION ─────────────────────────── -->
-    <nav class="bottom-nav" id="bottom-nav">
-      <button class="nav-btn active" id="nav-home" onclick="switchPage('home')">
-        <i class="ph-fill ph-house" id="nav-home-icon"></i>
-        <span id="nav-home-label">Home</span>
+    <!-- Bottom Navigation -->
+    <nav id="bottom-nav">
+      <button class="nav-btn active" data-page="home" onclick="switchPage('home')">
+        <i class="ph-fill ph-house"></i>
+        <span data-i18n="nav_home">Home</span>
       </button>
-      <button class="nav-btn" id="nav-earn" onclick="switchPage('earn')">
-        <i class="ph-fill ph-coins" id="nav-earn-icon"></i>
-        <span id="nav-earn-label">Earn</span>
+      <button class="nav-btn" data-page="earn" onclick="switchPage('earn')">
+        <i class="ph-fill ph-lightning"></i>
+        <span data-i18n="nav_earn">Earn</span>
       </button>
-      <button class="nav-btn" id="nav-profile" onclick="switchPage('profile')">
-        <i class="ph-fill ph-user-circle" id="nav-profile-icon"></i>
-        <span id="nav-profile-label">Profile</span>
+      <button class="nav-btn" data-page="profile" onclick="switchPage('profile')">
+        <i class="ph-fill ph-user-circle"></i>
+        <span data-i18n="nav_profile">Profile</span>
       </button>
     </nav>
+
   </div>
 
-  <!-- ── DAILY TASK MODAL ──────────────────────────── -->
-  <div id="task-modal" class="modal-overlay hidden">
-    <div class="modal-box task-modal-box">
-      <div class="modal-top-row">
-        <h3 class="modal-title" id="task-modal-title">Review Images</h3>
-        <button class="close-btn" onclick="closeTaskModal()"><i class="ph-bold ph-x"></i></button>
-      </div>
-      <p class="modal-desc" id="task-modal-sub">Rate each image for content issues</p>
-      <div id="task-images-grid" class="task-images-grid"></div>
-      <div id="task-image-reviews" class="task-image-reviews"></div>
-      <button class="btn btn-primary btn-full" id="task-submit-btn" onclick="submitTaskReview()">
-        <i class="ph-bold ph-paper-plane-tilt"></i>
-        <span id="task-submit-label">Submit Review</span>
-      </button>
-    </div>
-  </div>
+  <!-- ===== MODALS ===== -->
 
-  <!-- ── CLAIM CODE MODAL ──────────────────────────── -->
+  <!-- Claim Modal -->
   <div id="claim-modal" class="modal-overlay hidden">
     <div class="modal-box">
-      <div class="modal-top-row">
-        <h3 class="modal-title" id="claim-modal-title">Censor Claim</h3>
-        <button class="close-btn" onclick="closeClaimModal()"><i class="ph-bold ph-x"></i></button>
+      <div class="modal-header">
+        <span class="modal-title" data-i18n="daily_claim">Daily Claim</span>
+        <button class="modal-close" onclick="closeModal('claim-modal')"><i class="ph ph-x"></i></button>
       </div>
-      <div class="claim-progress-bar-wrap">
-        <div class="claim-progress-track">
-          <div class="claim-progress-fill" id="claim-progress-fill"></div>
+      <div class="modal-body">
+        <div class="claim-progress-wrap">
+          <div class="claim-progress-label">
+            <span data-i18n="claims_used">Claims Used</span>
+            <span id="claim-modal-progress">0 / 7</span>
+          </div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar" id="claim-modal-bar" style="width:0%"></div>
+          </div>
+          <div class="claim-dots" id="claim-dots">
+            <!-- dots rendered by JS -->
+          </div>
         </div>
-        <div class="claim-progress-label" id="claim-progress-label">0/7 claimed today</div>
+        <div class="claim-input-wrap">
+          <input type="text" id="claim-code-input" class="input" placeholder="Enter code" autocomplete="off" autocorrect="off" spellcheck="false">
+          <button class="btn btn-primary" id="btn-claim-submit" onclick="submitClaimCode()">
+            <i class="ph ph-arrow-right"></i>
+          </button>
+        </div>
+        <div id="claim-modal-error" class="claim-error hidden"></div>
+        <div class="claim-reward-info">
+          <i class="ph-fill ph-coin" style="color:#F5C518;font-size:14px;"></i>
+          <span>+3,000 coins per claim</span>
+        </div>
       </div>
-      <input
-        type="text"
-        id="claim-code-input"
-        class="code-input"
-        placeholder="Enter code"
-        autocomplete="off"
-        autocorrect="off"
-        autocapitalize="off"
-        spellcheck="false"
-      />
-      <div class="claim-error" id="claim-error-msg"></div>
-      <button class="btn btn-primary btn-full" id="claim-submit-btn" onclick="submitClaimCode()">
-        <i class="ph-bold ph-ticket"></i>
-        <span id="claim-submit-label">Claim Reward</span>
-      </button>
     </div>
   </div>
 
-  <!-- ── TON ADDRESS MODAL ──────────────────────────── -->
+  <!-- Task Modal (Moderation) -->
+  <div id="task-modal" class="modal-overlay hidden">
+    <div class="modal-box modal-box-lg">
+      <div class="modal-header">
+        <span class="modal-title" id="task-modal-title" data-i18n="moderation_task">Moderation Task</span>
+        <button class="modal-close" onclick="closeModal('task-modal')"><i class="ph ph-x"></i></button>
+      </div>
+      <div class="modal-body">
+        <!-- Image Display -->
+        <div class="task-image-wrap">
+          <img id="task-image" src="" alt="Content to moderate" class="task-image">
+          <div class="task-image-counter">
+            <span id="task-img-current">1</span> / 3
+          </div>
+        </div>
+
+        <!-- Moderation Question -->
+        <div class="task-question" data-i18n="task_question">Does this content violate community guidelines?</div>
+
+        <!-- Moderation Preset Buttons -->
+        <div class="preset-section">
+          <div class="preset-label" data-i18n="quick_labels">Quick Labels</div>
+          <div class="preset-grid" id="preset-grid">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Selected Verdict -->
+        <div class="verdict-display" id="verdict-display">
+          <span class="verdict-label" data-i18n="selected">Selected:</span>
+          <span id="verdict-text" class="verdict-text">None</span>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="task-actions">
+          <button class="btn btn-outline btn-red" id="btn-task-violates" onclick="selectVerdict('violates')">
+            <i class="ph ph-warning"></i>
+            <span data-i18n="violates">Violates</span>
+          </button>
+          <button class="btn btn-outline btn-green" id="btn-task-safe" onclick="selectVerdict('safe')">
+            <i class="ph ph-check"></i>
+            <span data-i18n="safe">Safe</span>
+          </button>
+        </div>
+
+        <button class="btn btn-primary btn-full" id="btn-task-next" onclick="taskNext()" disabled>
+          <span id="task-next-label" data-i18n="next_image">Next Image</span>
+          <i class="ph ph-arrow-right"></i>
+        </button>
+
+        <!-- Reward hint -->
+        <div class="task-reward-hint">
+          <i class="ph-fill ph-coin" style="color:#F5C518;font-size:14px;"></i>
+          +5,000 coins on completion
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TON Modal -->
   <div id="ton-modal" class="modal-overlay hidden">
     <div class="modal-box">
-      <div class="modal-top-row">
-        <h3 class="modal-title" id="ton-modal-title">TON Address</h3>
-        <button class="close-btn" onclick="closeTonModal()"><i class="ph-bold ph-x"></i></button>
+      <div class="modal-header">
+        <span class="modal-title" data-i18n="ton_wallet">TON Wallet</span>
+        <button class="modal-close" onclick="closeModal('ton-modal')"><i class="ph ph-x"></i></button>
       </div>
-      <p class="modal-desc" id="ton-modal-desc">Set your TON wallet address to receive rewards</p>
-      <input
-        type="text"
-        id="ton-address-input"
-        class="code-input"
-        placeholder="EQ... or UQ..."
-        autocomplete="off"
-        spellcheck="false"
-      />
-      <div class="claim-error" id="ton-error-msg"></div>
-      <div class="cooldown-notice" id="ton-cooldown-notice" style="display:none;"></div>
-      <button class="btn btn-primary btn-full" id="ton-save-btn" onclick="saveTonAddress()">
-        <i class="ph-bold ph-floppy-disk"></i>
-        <span id="ton-save-label">Save</span>
-      </button>
-    </div>
-  </div>
-
-  <!-- ── SOCIAL TASK MODAL ─────────────────────────── -->
-  <div id="social-modal" class="modal-overlay hidden">
-    <div class="modal-box">
-      <div class="modal-top-row">
-        <h3 class="modal-title" id="social-modal-title">Social Task</h3>
-        <button class="close-btn" onclick="closeSocialModal()"><i class="ph-bold ph-x"></i></button>
-      </div>
-      <div id="social-modal-icon" style="text-align:center;margin:12px 0 8px;font-size:42px;"></div>
-      <p class="modal-desc" id="social-modal-desc">Open the link and wait 2 minutes to claim your reward</p>
-      <div class="timer-wrap" id="social-timer-wrap" style="display:none;">
-        <div class="timer-ring">
-          <svg width="72" height="72" viewBox="0 0 72 72">
-            <circle cx="36" cy="36" r="30" fill="none" stroke="#2a2a2a" stroke-width="6"/>
-            <circle id="timer-circle" cx="36" cy="36" r="30" fill="none" stroke="#FFD700" stroke-width="6"
-              stroke-dasharray="188.5" stroke-dashoffset="188.5"
-              stroke-linecap="round" transform="rotate(-90 36 36)"/>
-          </svg>
-          <span class="timer-text" id="timer-seconds">120</span>
+      <div class="modal-body">
+        <div id="ton-cooldown-notice" class="cooldown-notice hidden">
+          <i class="ph-fill ph-clock" style="color:#F97316;"></i>
+          <span id="ton-cooldown-text" data-i18n="ton_cooldown">Address can only be changed once every 14 days.</span>
+        </div>
+        <div class="ton-input-wrap">
+          <input type="text" id="ton-address-input" class="input" placeholder="Enter TON wallet address" data-i18n-placeholder="ton_placeholder">
+          <button class="btn btn-primary btn-full mt-3" id="btn-ton-save" onclick="saveTonAddress()">
+            <i class="ph ph-floppy-disk"></i>
+            <span data-i18n="save">Save</span>
+          </button>
         </div>
       </div>
-      <button class="btn btn-primary btn-full" id="social-open-btn" onclick="openSocialLink()">
-        <i class="ph-bold ph-arrow-square-out"></i>
-        <span id="social-open-label">Open Link</span>
-      </button>
-      <button class="btn btn-gold btn-full" id="social-claim-btn" onclick="claimSocialReward()" style="display:none;margin-top:10px;">
-        <i class="ph-bold ph-coins"></i>
-        <span id="social-claim-label">Claim Reward</span>
-      </button>
     </div>
   </div>
 
-  <!-- App JavaScript -->
-  <script src="app.js"></script>
+  <!-- Language Modal -->
+  <div id="lang-modal" class="modal-overlay hidden">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span class="modal-title" data-i18n="select_language">Select Language</span>
+        <button class="modal-close" onclick="closeModal('lang-modal')"><i class="ph ph-x"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="lang-list" id="lang-list">
+          <button class="lang-option" onclick="selectLanguage('en')">🇬🇧 English</button>
+          <button class="lang-option" onclick="selectLanguage('bn')">🇧🇩 বাংলা</button>
+          <button class="lang-option" onclick="selectLanguage('hi')">🇮🇳 हिंदी</button>
+          <button class="lang-option" onclick="selectLanguage('es')">🇪🇸 Español</button>
+          <button class="lang-option" onclick="selectLanguage('ar')">🇸🇦 العربية</button>
+          <button class="lang-option" onclick="selectLanguage('de')">🇩🇪 Deutsch</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lottie Reward Overlay -->
+  <div id="lottie-reward" class="lottie-reward-overlay hidden">
+    <div class="lottie-reward-inner">
+      <div id="reward-lottie-anim" class="reward-lottie"></div>
+      <div class="reward-coins-text">
+        <i class="ph-fill ph-coin" style="color:#F5C518;"></i>
+        <span id="reward-amount">+3,000</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <!-- JS Files in exact order -->
+  <script src="js/config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/telegram.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/ads.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/earn.js"></script>
+  <script src="js/profile.js"></script>
+  <script src="js/app.js"></script>
+
 </body>
 </html>
