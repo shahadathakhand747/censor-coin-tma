@@ -1036,6 +1036,12 @@ body {
   color: #0D0D0D;
 }
 
+.btn-ghost {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
 /* ── REWARD OVERLAY ──────────────────────────────── */
 .reward-overlay {
   position: fixed;
